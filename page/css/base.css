@@ -1,0 +1,236 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+body {
+    position: relative;
+    width: 100%;
+    background-image: url(../img/bg.jpg);
+}
+a {
+    text-decoration: none;
+}
+li {
+    list-style: none;
+}
+header {
+    top: 0;
+    position: fixed;
+    width:100%;
+    height: 50px;
+    background-color: #191818;
+    color: white;
+}
+header nav {
+    position: relative;
+    width: 1170px;
+    height: 100%;
+    margin:0 auto;
+    box-sizing: border-box;
+    padding: 0px 15px;
+    vertical-align: top;
+}
+header nav .title{
+    font-size: 18px;
+    line-height: 50px;
+    color: #eee;
+    float: left;
+    /* vertical-align: top; */
+}
+header nav ul {
+    margin-left: 30px;
+    height: 30px;
+    float: left;
+}
+header nav ul li{
+    float: left; 
+    font-size: 14px;
+    line-height: 50px;
+    width: 58px;
+    text-align: center;
+}
+header nav ul li a{
+    color: white;
+}
+.searchBar input{
+    position: absolute;
+    display: inline-block;
+    right: 80px;
+    top:50%;
+    transform: translateY(-50%);
+    padding:7px 15px 7px 14px;
+    border-radius: 8px;
+    outline: none;
+    border: 1px solid #191818;
+}
+.searchBar button {
+    position: absolute;
+    display: inline-block;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    padding:7px 15px;
+    border-radius: 8px;
+    outline: none;
+    border: none;
+}
+.searchBar button:active {
+    background-color: #ccc;
+}
+
+.content {
+    width: 1170px;
+    margin: 80px auto 0;
+    overflow: hidden;
+}
+.content_left {
+    float: left;
+    width: 66%;
+    padding:0 15px;
+    box-sizing: border-box;
+}
+.content_right {
+    float: right;
+    width: 34%;
+    padding:0 15px;
+    box-sizing: border-box;
+}
+.content_right .right_module {
+    width: 100%;
+    background-color: #1f1f1f;
+    box-sizing: border-box;
+    border-radius: 5px;
+    overflow: hidden;
+    margin-bottom: 20px;
+    min-height: 200px;
+}
+.content_right .right_module > p {
+    padding:10px 15px;
+    background-color: #191818;
+    color: #eee;
+    font-size: 14px;
+}
+.content_right .right_module ul {
+    padding:15px 15px 10px 15px;
+    width: 100%;
+    /* float: left; */
+    overflow: hidden;
+    box-sizing: border-box;
+}
+.content_right .right_module ul.tags li {
+    margin-right: 8px;
+    margin-bottom: 10px;
+    word-break: break-word;
+    display: inline-block;
+}
+.content_right .right_module ul.tags li a{
+    cursor: pointer;
+    color: rgb(62, 208, 253);
+}
+.content_right .right_module ul.hot {
+    padding:0px 15px 10px 15px;
+}
+.content_right .right_module ul.hot li{
+    padding:10px 0 ;
+    border-top: 1px solid #292929;
+}
+.content_right .right_module ul.hot li a {
+    font-size: 14px;
+    color: #eee;
+}
+.right_module ul.comment >li > div {
+    display: inline-block;
+    font-size: 14px;
+    width: 100%;
+}   
+.right_module ul.comment .username{
+    color: #fff;
+    float: left;
+    font-weight: bold;;
+}
+
+.right_module ul.comment .send_time {
+    float: right;
+    color: #fff;
+}
+.right_module ul.comment >li > p {
+    padding:3px 0;
+    font-size: 13px;
+}
+.right_module ul.comment >li > p > a{
+    color: #aaa !important;
+    cursor: pointer;
+}
+.right_module ul.comment >li > p > a:hover {
+    color: rgb(42, 110, 165)!important;
+}
+ul.link li{
+  width: 50%;
+  float: left;
+  padding:10px 0 ;
+  border-bottom: 1px solid #292929;
+}
+ul.link li a {
+    color: #fff;
+}
+footer {
+  width: 100%上;
+  background-color: #191818;
+  text-align: center;
+  padding:15px 0;
+}
+footer ul {
+    overflow: hidden;
+    width: 100%;
+    text-align: center;
+}
+footer ul li {
+    display: inline-block;
+    margin:5px 10px;
+    cursor: pointer;
+}
+footer ul li a{
+    color: #aaa;
+    font-size: 14px;
+}
+footer p {
+    padding:5px 0;
+    color: #aaa;
+    width: 100%;
+    font-size: 14px;
+}
+.page {
+    display: inline-block;
+    background-color: #fff;
+    margin:20px 0 50px 0;
+    border-radius: 6px;
+    overflow: hidden;
+}
+.page ul {
+    float: left;
+}
+.page ul li {
+    float: left;
+    width: 30px;
+    text-align: center;
+    height: 30px;
+    line-height: 30px;
+    border: 1px solid #ddd;
+    border-left: none;
+    cursor: pointer;
+    user-select: none;
+}
+.page ul li.active {
+    background-color: #191818;
+    color: #fff;
+}
+.page ul li:hover {
+    background-color: #eee;
+}
+.page ul li.active:hover {
+    background-color: #191818;
+}
+.page ul li:first-of-type,.page ul li:last-of-type {
+    font-size: 14px;
+    width: 60px;
+}

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>何文涛</title>
+    <link rel="stylesheet" href="./css/base.css">
+    <link rel="stylesheet" href="./css/index.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+    <script src="./js/axios.js"></script>
+    <style>
+      [v-cloak]{
+            display: none !important;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav id="search">
+            <a href="/index.html" class="title">我的个人博客 | 技术博客</a>
+            <ul>
+                <li>
+                    <a href="/index.html">首页</a>
+                   </li>
+                <li><a href="/sitemap.html">地图</a></li>
+                <li>
+                    <a href="/about.html">关于</a>
+                 </li>
+                <li>
+                    <a href="/guestbook.html">留言</a>
+                </li>
+            </ul>
+            <div class="searchBar">
+                <input type="text" v-model='search' placeholder="请输入查询的关键字">
+                <button @click='searchBtn'>搜索</button>
+            </div>
+        </nav>
+    </header>
+    <div class="content">
+        <div class="content_left">
+            <div class="eveyday" id="everyday" v-cloak>
+                <p class="one">每日一句(2020)</p>
+                <div class="sentence" v-html="sentence" >
+                    
+                </div>
+            </div>
+            <div class="container_list" id="bolg_list" v-cloak>
+                <ul>
+                    <li v-for='item in blog_data'>
+                        <p><a :href="'/blog_detail.html?bid='+item.id">{{item.title}}</a></p>
+                        <div class="text">
+                            {{item.content}}
+                        </div>
+                        <div class="sendMes">
+                            发布于{{item.ctime}}  &nbsp;|  浏览({{item.views}}) | &nbsp;  Tags：{{item.tags}}
+                        </div>
+                    </li>
+                </ul>
+                <div class="page">
+                    <ul>
+                        <li v-for="page in pageArr"
+                          :class="{active:page.text == cursorPage }"
+                          @click="jumpTo(page.page)"
+                        >{{page.text}}</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="content_right">
+            <div class="right_module">
+                <p>随机标签云</p>
+                <ul class="tags" id="tags_cloud" v-cloak>
+                    <li v-for='item in tags_data'>
+                        <a :style="{fontSize:random_size(),color:random_color()}" :href="item.link">{{item.text}}</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="right_module">
+                <p>最近热门</p>
+                <ul class="hot" id="rencent_hot" v-cloak>
+                    <li v-for="item in hot_data">
+                        <a :href="item.link">
+                            {{item.title}}
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="right_module">
+                <p>最新评论</p>
+                <ul class="comment hot" id="comment" v-cloak>
+                    <li v-for="item in commnet_data">
+                        <div>
+                            <span class="username">{{item.username}}</span>
+                            <span class="send_time">{{item.ctime}}</span>
+                        </div>
+                        <p >
+                           <a :href="item.link">{{item.comment}}</a>
+                        </p>
+                    </li>
+                </ul>
+            </div>
+            <div class="right_module">
+                <p>友情链接</p>
+                <ul class="link">
+                    <li><a href="">php</a></li>
+                    <li><a href="">java</a></li>
+                    <li><a href="">javaScript</a></li>
+                    <li><a href="">vue</a></li>
+                    <li><a href="">php</a></li>
+                    <li><a href="">java</a></li>
+                    <li><a href="">javaScript</a></li>
+                    <li><a href="">vue</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <ul>
+            <li><a href="">C/C++</a></li>
+            <li><a href="">CSS/DIV</a></li>
+            <li><a href="">java</a></li>
+            <li><a href="">javaScript</a></li>
+        </ul>
+        <p>
+            Copyright © 2010-2019 个人博客 All rights reserved. 由免费开源的WordPress强力驱动. 鲁ICP备14017955号站长统计
+        </p>
+    </footer>
+    <script type="module" src="/js/index.js"></script>
+    <script type="module" src="./js/base.js"></script>
+</body>
+</html>

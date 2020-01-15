@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>站点地图</title>
+    <link rel="stylesheet" href="/css/sitemap.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+    <script src="./js/axios.js"></script>
+</head>
+<body>
+    <div class="title">个人博客's SiteMap</div>
+    <div class="link">
+        <b><a href="/index.html">个人博客</a></b>
+        >>
+        <span><a href="/sitemap.html">站定地图</a></span>
+    </div>
+    <div class="articles" id="articles">
+        <span class="articles_title">最新文章</span>
+        <ul>
+            <li v-for='item in articlesList'>
+                <a :href="item.link">{{item.title}}</a>
+            </li>
+        </ul>
+    </div>
+    <script src="./js/sitemap.js"></script>
+</body>
+</html>

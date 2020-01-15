@@ -1,0 +1,152 @@
+.blog_wrap {
+    width: 100%;
+    background-color: #f5f5f5;
+    box-sizing: border-box;
+    padding:20px;
+    border-radius: 5px;
+    min-height: 198px;
+}
+.blog_wrap .cur_position {
+    font-size: 14px;
+}
+.blog_wrap .cur_position  a {
+    color: rgb(0, 140, 255);
+}
+.blog_mes {
+    padding-bottom: 20px;
+    border-bottom: 1px solid #ccc;
+    margin-bottom: 20px;
+}
+.blog_mes p{
+    margin:12px 0 12px 0;
+    font-size: 20px;
+}
+.blog_mes .mes {
+    font-size: 14px;
+}
+.blog_content {
+    font-size: 14px;
+    vertical-align: middle;
+}
+.blog_content img {
+    vertical-align: middle;
+    width: 16px;
+    height: 16px;
+    display: inline-block;
+    margin-bottom: 2px;
+}
+.blog_comment {
+    margin-top: 30px;
+    width: 100%;
+    background-color: #f5f5f5;
+    padding:20px;
+    border-radius: 5px;
+    box-sizing: border-box;
+    margin-bottom: 30px;
+    padding-top: 60px;
+}
+.blog_comment > p {
+    margin-bottom: 10px;
+}
+.blog_comment .user_msg {
+    margin:5px 0 15px 0;
+}
+.blog_comment .user_msg > input{
+    width: 300px;
+    padding:8px 0 8px 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+.blog_comment .user_msg > input:first-of-type{
+    width: 250px;
+    margin-right: 30px;
+}
+.comment_content {
+    width: 90%;
+    height:100px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-sizing: border-box;
+    padding: 10px 15px;
+}
+
+.conment_code input{
+    width: 250px;
+    padding:8px 0 8px 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin: 10px 0 10px 0;
+}
+.conment_code .code{
+    margin-left: 30px;
+    vertical-align: middle;
+    display: inline-block;
+    box-shadow: 1px 1px 6px #191919 ;
+}
+.comment_btn button {
+    padding:6px 10px;
+    background-color: #5f5f5f;
+    border: 1px solid #5f5f5f;;
+    border-radius: 5px;
+    outline: none;
+    color: #f5f5f5;
+    cursor: pointer;
+}
+.comment_btn button:hover {
+    background-color: #191919;
+    color:#ffffff;
+    border: 1px solid #191919;
+}
+/* 回复的评论  */
+.comments {
+    width: 100%; 
+    margin-top: 20px;
+}
+.comments .comments_mes {
+    display: block;
+    margin-bottom: 10px;
+}
+.comments .comment {
+    border-radius: 5px;
+    width: 100%;
+    box-sizing: border-box;
+    border: 1px dashed #7ca4c1;
+    background-color: #f2f2f5;;
+    padding:20px ;
+    margin-bottom: 10px;
+}
+.comments .comment > p{
+    font-size: 14px;
+    color: #333;
+    padding:10px 20px;
+}
+.comment_name {
+    font-weight: bold;
+}
+
+.comment_child {
+    width:95%;
+    background-color: #eaeaec;
+    margin:0 auto;
+    box-sizing: border-box;
+    padding: 10px ;
+    font-size: 13px;
+}
+.comment_child > div {
+    margin:5px 0;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #d9d9d9;;
+}
+.comment_child .auter {
+    color: #eb7350;
+}
+.auter_comment {
+    word-break: break-word;
+}
+.comment_child > div .time {
+    padding:5px 20px 5px 0px;
+    color: #808080;
+    font-size: 12px;
+    display: flex;
+    justify-content: space-between;
+}

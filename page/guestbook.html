@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/base.css">
+    <link rel="stylesheet" href="/css/guestbook.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+    <script src="./js/axios.js"></script>
+    <style>
+        [v-cloak]{
+              display: none !important;
+          }
+      </style>
+</head>
+<body>
+    <header>
+        <nav id="search">
+            <a href="/index.html" class="title">我的个人博客 | 技术博客</a>
+            <ul>
+                <li>
+                    <a href="/index.html">首页</a>
+                   </li>
+                <li><a href="/sitemap.html">地图</a></li>
+                <li>
+                    <a href="/about.html">关于</a>
+                 </li>
+                <li>
+                    <a href="/guestbook.html">留言</a>
+                </li>
+            </ul>
+            <div class="searchBar">
+                <input type="text" v-model='search' placeholder="请输入查询的关键字">
+                <button @click='searchBtn'>搜索</button>
+            </div>
+        </nav>
+    </header>
+    <div class="content">
+        <div class="content_left">
+          <div class="describe">
+                <p>欢迎灌水交流，别看我长时间不发博，博主可一直都在线~</p>
+                <p style="color: red;">友链只交换技术类个人博客，本博客稳定在线，所以也需要你的站尽量稳定。</p>
+                <p style="color: red;">不要皮，谢谢。</p>
+                <p style="color: red;">博主联系:MzcxNjA0Nzg1</p>
+          </div>
+          <div class="comments" id="cur_comments"  v-cloak>
+            <span class="comments_mes">关于页面的评论：目前有{{totalCount}}条评论</span>
+            <div class="comment" v-for='list in commentList'>
+                <div>
+                    <span class="comment_name">{{list.user_name}}</span>：发表于 {{list.ctime}} 
+                    <a style="cursor: pointer; color: blue;" @click='reply(list.id,list.user_name,list.public_parent)'>[回复]</a>
+                </div>
+                <p :id="'comment_'+list.id">
+                    {{list.comment}}
+                </p>
+                <div class="comment_child" v-if='list.children'>
+                     <div v-for='child in list.children' >
+                         <span class="auter">{{child.user_name}}</span>: 回复 
+                         <span class="auter">@{{child.parent_name}}</span>:
+                         <span class="auter_comment" :id="'comment_'+child.id">{{child.comment}}</span>
+                         <p class="time">
+                             <span>{{child.ctime}}</span>
+                             <a style="cursor: pointer; color: #eb7350;" @click='reply(child.id,child.user_name,child.public_parent)'>[回复]</a>
+                         </p>
+                     </div> 
+                </div>
+            </div>
+          </div>
+          <div class="blog_comment" id="blog_comment"  v-cloak>
+            <p>发表评论</p>
+            <div class="user_msg">
+                <input type="hidden" id="comment_reply_name" value="0">
+                <input type="hidden" id="comment_reply" value="-1">
+                <input type="hidden" id="public_parent" value="0">
+                <input type="text" placeholder="昵称" id="username">
+                <input type="text" placeholder="邮箱(评论被回复时你能收到通知)" id="email">
+            </div>
+            <textarea class="comment_content" id="comment_content">
+
+            </textarea>
+            <div class="conment_code">
+                <input type="text" placeholder="验证码" id="code"> <span class="code" @click='getRandomCode' v-html='code'></span>
+            </div>
+            <div class="comment_btn">
+                <button @click="sendComment">提交留言</button>
+                <button @click='clearMes'>重写</button>
+            </div >
+          </div>
+        </div>
+        <div class="content_right">
+            <div class="right_module">
+                <p>随机标签云</p>
+                <ul class="tags" id="tags_cloud" v-cloak>
+                    <li v-for='item in tags_data'>
+                        <a :style="{fontSize:random_size(),color:random_color()}" :href="item.link">{{item.text}}</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="right_module">
+                <p>最近热门</p>
+                <ul class="hot" id="rencent_hot" v-cloak>
+                    <li v-for="item in hot_data">
+                        <a :href="item.link">
+                            {{item.title}}
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="right_module">
+                <p>最新评论</p>
+                <ul class="comment hot" id="comment" v-cloak>
+                    <li v-for="item in commnet_data">
+                        <div>
+                            <span class="username">{{item.username}}</span>
+                            <span class="send_time">{{item.ctime}}</span>
+                        </div>
+                        <p>
+                           <a :href="item.link">{{item.comment}}</a>
+                        </p>
+                    </li>
+                </ul>
+            </div>
+            <div class="right_module">
+                <p>友情链接</p>
+                <ul class="link">
+                    <li><a href="">php</a></li>
+                    <li><a href="">java</a></li>
+                    <li><a href="">javaScript</a></li>
+                    <li><a href="">vue</a></li>
+                    <li><a href="">php</a></li>
+                    <li><a href="">java</a></li>
+                    <li><a href="">javaScript</a></li>
+                    <li><a href="">vue</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <ul>
+            <li><a href="">C/C++</a></li>
+            <li><a href="">CSS/DIV</a></li>
+            <li><a href="">java</a></li>
+            <li><a href="">javaScript</a></li>
+        </ul>
+        <p>
+            Copyright © 2010-2019 个人博客 All rights reserved. 由免费开源的WordPress强力驱动. 鲁ICP备14017955号站长统计
+        </p>
+    </footer>
+    <script type="module" src="./js/guestbook.js"></script>
+    <script type="module" src="./js/base.js"></script>
+</body>
+</html>

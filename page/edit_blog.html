@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Blog</title>
+    <link rel="stylesheet" href="./css/edit_blog.css">
+    <style type="text/css">
+     
+    </style>
+    <script src="./js/axios.js"></script>
+</head>
+<body>
+    <h3>
+        编辑博客
+    </h3>
+    <div class="wrapper">
+        <div class="blog_title">
+            <span>Article</span>
+            <input type="text" class="inp_title">
+        </div>
+        <div class="tags">
+            <span>Tags</span>
+            <!-- <select name="" id="" multiple='multiple'  class="inp_tags">
+                <option value="html">HTML</option>
+                <option value="css">CSS</option>
+                <option value="js">JS</option>
+                <option value="vue">Vue</option>
+                <option value="react">React</option>
+            </select> -->
+            <div class="select">
+                <a >选择标签</a>
+                <ul class="tags">
+                    <li>JS</li>
+                    <li>HTML</li>
+                    <li>CSS</li>
+                    <li>Vue</li>
+                    <li>Node</li>
+                    <li>React</li>
+                </ul>
+            </div>
+            <ul class="chose">
+            </ul>
+            <button class="tags_empty">清空标签</button>
+        </div>
+        <div class="body">
+            <span class="blog">Blog</span>
+            <div id="div1">
+                
+            </div>
+        </div>
+        <div class="btn">
+            <button class="submit">上传</button>
+        </div>
+    </div>
+    <!-- 引用js -->
+    <script type="text/javascript" src="/tools/wangEditor-3.1.1/release/wangEditor.js"></script>
+    <script type="text/javascript">
+        var E = window.wangEditor
+        var editor = new E('#div1')
+          // 配置服务器端地址
+        //  editor.customConfig.uploadImgServer = '/edit_everyday.html'
+         editor.customConfig.uploadImgShowBase64 = true
+        editor.create()
+    </script>
+    <script src="./js/edit_blog.js"></script>
+</body>
+</html>

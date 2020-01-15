@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>每日一句编辑</title>
+    <style type="text/css">
+        body{
+            background-color: #eee;
+        }
+        h3 {
+            text-align: center;
+        }
+        .body {
+            width: 800px;
+            margin: 0 auto 0 auto;
+            background-color: #fff;
+        }
+        .btnBox {
+            padding: 20px 0;
+            text-align: center;
+        }
+        button {
+            display: inline-block;
+            padding:6px 15px;
+        }
+    </style>
+</head>
+<body>
+    <h3>每日一句编辑</h3>
+    <div class="wrapper">
+        <div class="body">
+            <div id="div1">
+                
+            </div>
+        </div>
+        <div class="btnBox">
+            <button id="submit">提交</button>
+        </div>
+    </div>
+    <!-- 引用js -->
+    <script type="text/javascript" src="/tools/wangEditor-3.1.1/release/wangEditor.js"></script>
+    <script type="text/javascript">
+        var E = window.wangEditor;
+        var editor = new E('#div1');
+          // 配置服务器端地址
+        //  editor.customConfig.uploadImgServer = '/edit_everyday.html';
+        editor.customConfig.uploadImgShowBase64 = true;
+        editor.create();
+
+        let osubmit = document.getElementById('submit');
+        let content = document.getElementById('div1');
+        osubmit.onclick = function () {
+            let xhr = new XMLHttpRequest();
+            // 获取文本内容
+            let data = editor.txt.html()
+            xhr.open('post','/insertEveryDay',true);
+            xhr.onreadystatechange = function(){
+                if(xhr.readyState == 4 && xhr.status == 200) {
+                    let result = JSON.parse(xhr.responseText)
+                    alert(result.msg);
+                    editor.txt.html("");
+                }
+            }
+            xhr.send(data);
+        }
+   
+        
+    </script>
+</body>
+</html>
